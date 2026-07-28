@@ -35,7 +35,7 @@
             <p>- ว/ด/ป เกิด : 22 พฤศจิกายน 2551</p>
             <p>- อายุ : 18 ปี</p>
             <p>- สัญชาติ / เชื้อชาติ : ไทย / ไทย</p>
-            <p>- กำลังศึกษาอยู่โรงเรียน"กระทุ่มแบนวิเศษสมุทคุณ"</p>
+            <p>- กำลังศึกษาอยู่โรงเรียน "กระทุ่มแบนวิเศษสมุทคุณ"</p>
             <p>- แผนการเรียน : ศิลป์-คำนวณ</p>
         </section>
 
@@ -48,8 +48,11 @@
             <p>ยาย : นางวันเพ็ญ ใจกล้า</p>
         </section>
 
+        <hr>
+
         <section id="sop">
-            <h2>SOP</h2>
+            <h2>SOP (Statement of Purpose)</h2>
+            <p>แรงบันดาลใจและความมุ่งมั่นในการศึกษาต่อสาขาวิศวกรรมคอมพิวเตอร์</p>
             <a href="pages/sop.html" target="_blank" class="link-btn">อ่านรายละเอียดเพิ่มเติม &rarr;</a>
         </section>
         
@@ -74,7 +77,7 @@
                 <article class="card">
                     <h3>ผลงานที่ 1</h3>
                     <div class="img-container">
-                        <img src="certificate/1785162486898.jpg" onclick="openLightbox('certificate/1785162486898.jpg')">
+                        <img src="certificate/1785162486898.jpg" alt="การอบรม online เกี่ยวกับการใช้ OpenCV" onclick="openLightbox(this.src)">
                     </div>
                     <p>การอบรม online เกี่ยวกับการใช้ OpenCV</p>
                 </article>
@@ -82,15 +85,15 @@
                 <article class="card">
                     <h3>ผลงานที่ 2</h3>
                     <div class="img-container">
-                        <img src="certificate/Screenshot 2026-07-27 21.24.10.png" onclick="openLightbox('certificate/Screenshot 2026-07-27 21.24.10.png')">
+                        <img src="certificate/Screenshot 2026-07-27 21.24.10.png" alt="การอบรม online เกี่ยวกับระบบการทำงานของ AI" onclick="openLightbox(this.src)">
                     </div>
                     <p>การอบรม online เกี่ยวกับระบบการทำงานของ AI</p>
                 </article>
 
-                 <article class="card">
+                <article class="card">
                     <h3>ผลงานที่ 3</h3>
                     <div class="img-container">
-                        <img src="certificate/1785244417112.jpg" onclick="openLightbox('certificate/1785244417112.jpg')">
+                        <img src="certificate/1785244417112.jpg" alt="กิจกรรม คณิตคิดทุกสัปดาห์" onclick="openLightbox(this.src)">
                     </div>
                     <p>กิจกรรม "คณิตคิดทุกสัปดาห์"</p>
                 </article>
@@ -98,7 +101,7 @@
                 <article class="card">
                     <h3>ผลงานที่ 4</h3>
                     <div class="img-container">
-                        <img src="certificate/1785247821688.jpg" onclick="openLightbox('certificate/1785247821688.jpg')">
+                        <img src="certificate/1785247821688.jpg" alt="การอบรม STEM ศึกษา" onclick="openLightbox(this.src)">
                     </div>
                     <p>การอบรม STEM ศึกษา</p>
                 </article>
@@ -126,28 +129,20 @@
     </div>
 
     <script>
-        // ฟังก์ชันเปิด Lightbox เมื่อคลิกที่รูป
         function openLightbox(imageSrc) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            
             lightboxImg.src = imageSrc;
             lightbox.classList.add('active');
-            
-            // ล็อกไม่ให้สกอร์ลหน้าเว็บตอนเปิดรูป
             document.body.style.overflow = 'hidden'; 
         }
 
-        // ฟังก์ชันปิด Lightbox
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
-            
-            // คืนค่าสกอร์ลหน้าเว็บให้กลับมาปกติ
             document.body.style.overflow = 'auto'; 
         }
 
-        // ปิด Lightbox เมื่อกดปุ่ม Esc บนคีย์บอร์ด
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeLightbox();
