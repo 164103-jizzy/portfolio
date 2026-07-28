@@ -99,5 +99,39 @@
         <p>&copy; 2026 Sujit Kerdthong. All rights reserved.</p>
     </footer>
 
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        // ฟังก์ชันเปิด Lightbox เมื่อคลิกที่รูป
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            
+            // ล็อกไม่ให้สกอร์ลหน้าเว็บตอนเปิดรูป
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        // ฟังก์ชันปิด Lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            
+            // คืนค่าสกอร์ลหน้าเว็บให้กลับมาปกติ
+            document.body.style.overflow = 'auto'; 
+        }
+
+        // ปิด Lightbox เมื่อกดปุ่ม Esc บนคีย์บอร์ด
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
