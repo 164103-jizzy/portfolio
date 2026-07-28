@@ -1,0 +1,222 @@
+/* =========================================
+   1. SETUP & VARIABLES (ธีมและฟอนต์)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap');
+
+:root {
+  --bg-color: #0b0f19;       /* สีพื้นหลังเข้มลึกลับ */
+  --card-bg: #111827;        /* สีพื้นหลังของกล่องข้อความ */
+  --accent-cyan: #00f2fe;    /* สีฟ้า Neon */
+  --accent-green: #4facfe;   /* สีเขียว/ฟ้า Glossy */
+  --text-main: #f3f4f6;      /* สีตัวอักษรหลัก */
+  --text-muted: #9ca3af;     /* สีตัวอักษรรอง */
+  --border-color: #1f2937;  /* สีเส้นขอบ */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  /* เพิ่ม Grid Pattern พื้นหลังสไตล์ Tech */
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.15), transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 30px 30px, 30px 30px;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION BAR
+   ========================================= */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(11, 15, 25, 0.8);
+  backdrop-filter: blur(12px); /* เอฟเฟกต์กระจกฝ้าแบบโมเดิร์น */
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+}
+
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+}
+
+nav h2 {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+}
+
+/* =========================================
+   3. LAYOUT & SECTIONS
+   ========================================= */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+section {
+  padding: 4rem 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 1rem 0;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* เติมเส้นใต้หัวข้อแบบเทคๆ */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-cyan), transparent);
+  border-radius: 2px;
+}
+
+/* =========================================
+   4. CONTENT COMPONENTS
+   ========================================= */
+/* Hero Section */
+#hero {
+  text-align: center;
+  padding: 6rem 0 4rem 0;
+}
+
+#hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, #ffffff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+/* Skills List */
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+}
+
+#skills li {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  color: var(--accent-cyan);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+#skills li:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
+}
+
+/* Project Cards */
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 1.8rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.1);
+  transform: translateY(-4px);
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.project-card a, #contact a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.project-card a:hover, #contact a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   5. FOOTER
+   ========================================= */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-family: 'Fira Code', monospace;
+}
