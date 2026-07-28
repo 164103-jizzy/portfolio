@@ -221,28 +221,119 @@ footer {
   font-family: 'Fira Code', monospace;
 }
 /* =========================================
-   6. IMAGES (ส่วนจัดการรูปภาพ)
+   6. PROJECT GRID & IMAGES (ระบบรูปภาพและการ์ด)
    ========================================= */
 
-/* ปรับรูปภาพทั้งหมดในหน้าเว็บเบื้องต้น */
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+/* จัด Layout การ์ดผลงานให้แยกออกจากกันอย่างเป็นระเบียบ */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-/* กำหนดขนาดเฉพาะรูปที่ 1 */
-.img-profile {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border: 2px solid var(--accent-cyan); /* แถมเส้นขอบนีออนให้เข้ากับธีม */
+/* สไตล์การ์ดรูปภาพให้คุมโทนธีม Dark Tech */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-/* กำหนดขนาดเฉพาะรูปที่ 2 */
-.img-banner {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border: 1px solid var(--border-color);
+/* เอฟเฟกต์ Glow และลอยขึ้นเมื่อ Hover */
+.card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+}
+
+/* กรอบควบคุมขนาดรูปภาพให้เท่ากันทุกรูป */
+.img-container {
+    width: 100%;
+    height: 190px; /* กำหนดความสูงคงที่เพื่อให้เท่ากันทุกรูป */
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: block;
+    cursor: pointer;
+}
+
+/* ตั้งค่ารูปภาพภายในกรอบ */
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ตัดขอบรูปส่วนเกิน ไม่ให้รูปยืด/บีบ */
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+/* เอฟเฟกต์ซูมรูปเล็กน้อยเมื่อชี้เมาส์ */
+.img-container:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+}
+
+/* =========================================
+   7. LIGHTBOX MODAL (ป๊อปอัพดูรูปภาพเต็มจอ)
+   ========================================= */
+.lightbox-modal {
+    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 15, 25, 0.9); /* พื้นหลังมืดเบลอ */
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* เมื่อสั่งเปิดผ่าน JS */
+.lightbox-modal.active {
+    display: flex;
+}
+
+/* รูปภาพในป๊อปอัพ */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 12px;
+    border: 1px solid var(--accent-cyan);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+    object-fit: contain;
+}
+
+/* ปุ่มปิด (X) */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: var(--text-main);
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: var(--accent-cyan);
 }
