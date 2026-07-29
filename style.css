@@ -4,13 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap');
 
 :root {
-  --bg-color: #0b0f19;       /* สีพื้นหลังเข้มลึกลับ */
-  --card-bg: #111827;        /* สีพื้นหลังของกล่องข้อความ */
-  --accent-cyan: #00f2fe;    /* สีฟ้า Neon */
-  --accent-green: #4facfe;   /* สีเขียว/ฟ้า Glossy */
-  --text-main: #f3f4f6;      /* สีตัวอักษรหลัก */
-  --text-muted: #9ca3af;     /* สีตัวอักษรรอง */
-  --border-color: #1f2937;  /* สีเส้นขอบ */
+  --bg-color: #0b0f19;        /* สีพื้นหลังเข้มลึกลับ */
+  --card-bg: #111827;         /* สีพื้นหลังของกล่องข้อความ */
+  --accent-cyan: #00f2fe;     /* สีฟ้า Neon */
+  --accent-green: #4facfe;    /* สีเขียว/ฟ้า Glossy */
+  --text-main: #f3f4f6;       /* สีตัวอักษรหลัก */
+  --text-muted: #9ca3af;      /* สีตัวอักษรรอง */
+  --border-color: #1f2937;   /* สีเส้นขอบ */
 }
 
 * {
@@ -124,27 +124,82 @@ h2::after {
 }
 
 /* =========================================
-   4. CONTENT COMPONENTS
+   4. HERO SECTION (กรอบ Welcome ไฮเทคแบบคุมโทน)
    ========================================= */
-/* Hero Section */
 #hero {
+  position: relative;
+  padding: 50px 30px;
+  margin: 40px auto 30px auto;
+  max-width: 850px;
   text-align: center;
-  padding: 6rem 0 4rem 0;
+  
+  /* พื้นหลังน้ำเงินเข้มเน้นคุมโทนกับระบบหลัก */
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.95));
+  backdrop-filter: blur(10px);
+  
+  /* ตัดมุมกรอบแบบไฮเทค (Chamfered Corners) */
+  clip-path: polygon(
+      0 20px, 
+      20px 0, 
+      100% 0, 
+      100% calc(100% - 20px), 
+      calc(100% - 20px) 100%, 
+      0 100%
+  );
+
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* ดีเทลจุดมุมขวาบน */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  border-top: 3px solid var(--accent-cyan);
+  border-right: 3px solid var(--accent-cyan);
+}
+
+/* ดีเทลจุดมุมซ้ายล่าง */
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-bottom: 3px solid var(--accent-cyan);
+  border-left: 3px solid var(--accent-cyan);
+}
+
+#hero:hover {
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.35);
+  transform: translateY(-3px);
 }
 
 #hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(180deg, #ffffff, var(--text-muted));
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 #hero p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
+  margin: 0;
 }
 
+/* =========================================
+   5. CONTENT COMPONENTS
+   ========================================= */
 /* Skills List */
 #skills ul {
   display: flex;
@@ -170,7 +225,7 @@ h2::after {
   box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
 }
 
-/* Project Cards */
+/* Project Cards & Contact Links */
 .project-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -210,21 +265,8 @@ h2::after {
 }
 
 /* =========================================
-   5. FOOTER
-   ========================================= */
-footer {
-  text-align: center;
-  padding: 2rem;
-  border-top: 1px solid var(--border-color);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-family: 'Fira Code', monospace;
-}
-/* =========================================
    6. PROJECT GRID & IMAGES (ระบบรูปภาพและการ์ด)
    ========================================= */
-
-/* จัด Layout การ์ดผลงานให้แยกออกจากกันอย่างเป็นระเบียบ */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -232,7 +274,6 @@ footer {
     margin-top: 1.5rem;
 }
 
-/* สไตล์การ์ดรูปภาพให้คุมโทนธีม Dark Tech */
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -245,7 +286,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* เอฟเฟกต์ Glow และลอยขึ้นเมื่อ Hover */
 .card:hover {
     border-color: var(--accent-cyan);
     box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
@@ -264,10 +304,9 @@ footer {
     margin-top: 0.8rem;
 }
 
-/* กรอบควบคุมขนาดรูปภาพให้เท่ากันทุกรูป */
 .img-container {
     width: 100%;
-    height: 190px; /* กำหนดความสูงคงที่เพื่อให้เท่ากันทุกรูป */
+    height: 190px;
     overflow: hidden;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -275,15 +314,13 @@ footer {
     cursor: pointer;
 }
 
-/* ตั้งค่ารูปภาพภายในกรอบ */
 .img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* ตัดขอบรูปส่วนเกิน ไม่ให้รูปยืด/บีบ */
+    object-fit: cover;
     transition: transform 0.4s ease, filter 0.3s ease;
 }
 
-/* เอฟเฟกต์ซูมรูปเล็กน้อยเมื่อชี้เมาส์ */
 .img-container:hover img {
     transform: scale(1.08);
     filter: brightness(1.1);
@@ -293,26 +330,24 @@ footer {
    7. LIGHTBOX MODAL (ป๊อปอัพดูรูปภาพเต็มจอ)
    ========================================= */
 .lightbox-modal {
-    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+    display: none;
     position: fixed;
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(11, 15, 25, 0.9); /* พื้นหลังมืดเบลอ */
+    background-color: rgba(11, 15, 25, 0.9);
     backdrop-filter: blur(8px);
     justify-content: center;
     align-items: center;
     padding: 2rem;
 }
 
-/* เมื่อสั่งเปิดผ่าน JS */
 .lightbox-modal.active {
     display: flex;
 }
 
-/* รูปภาพในป๊อปอัพ */
 .lightbox-content {
     max-width: 90%;
     max-height: 85vh;
@@ -322,7 +357,6 @@ footer {
     object-fit: contain;
 }
 
-/* ปุ่มปิด (X) */
 .lightbox-close {
     position: absolute;
     top: 20px;
@@ -337,8 +371,9 @@ footer {
 .lightbox-close:hover {
     color: var(--accent-cyan);
 }
+
 /* =========================================
-   8. LINK BUTTON (ปุ่มลิงก์กดดูข้อมูลเพิ่มเติม)
+   8. LINK BUTTON & FOOTER
    ========================================= */
 .link-btn {
     display: inline-block;
@@ -354,80 +389,18 @@ footer {
     transition: all 0.3s ease;
 }
 
-#hero {
-    position: relative;
-    padding: 40px 30px;
-    margin: 30px auto;
-    max-width: 800px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.85); /* พื้นหลังขาวโปร่งแสง */
-    backdrop-filter: blur(8px);            /* เอฟเฟกต์กระจกฝ้า */
-    
-    /* ตัดมุมกรอบแบบไฮเทค (Chamfered Corners) */
-    clip-path: polygon(
-        0 20px, 
-        20px 0, 
-        100% 0, 
-        100% calc(100% - 20px), 
-        calc(100% - 20px) 100%, 
-        0 100%
-    );
-
-    /* เส้นขอบสีฟ้าสดสไตล์ไฮเทค */
-    border: 2px solid #3b82f6;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-    transition: all 0.3s ease;
-}
-
-/* เพิ่มดีเทลจุด/ขีด สไตล์ HUD ไฮเทคตรงมุม */
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 30px;
-    border-top: 3px solid #06b6d4;
-    border-right: 3px solid #06b6d4;
-}
-
-#hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    border-bottom: 3px solid #06b6d4;
-    border-left: 3px solid #06b6d4;
-}
-
-/* เอฟเฟกต์เมื่อ Hover */
-#hero:hover {
-    border-color: #06b6d4;
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.35);
-    transform: translateY(-3px);
-}
-#hero h1 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    /* ไล่เฉดสีตัวหนังสือ ฟ้า-น้ำเงิน */
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-#hero p {
-    font-size: 1rem;
-    color: #475569;
-    margin: 0;
-}
-/* เอฟเฟกต์เรืองแสงเมื่อเอาเมาส์ไปชี้ */
 .link-btn:hover {
     background-color: var(--accent-cyan);
     color: var(--bg-color);
     box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
     transform: translateY(-2px);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-family: 'Fira Code', monospace;
 }
