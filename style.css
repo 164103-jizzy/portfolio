@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap');
 
 :root {
-  --bg-color: #0b0f19;        /* สีพื้นหลังเข้มลึลับ */
+  --bg-color: #0b0f19;        /* สีพื้นหลังเข้มลึกลับ */
   --card-bg: #111827;         /* สีพื้นหลังของกล่องข้อความ */
   --accent-cyan: #00f2fe;     /* สีฟ้า Neon */
   --accent-green: #4facfe;    /* สีเขียว/ฟ้า Glossy */
@@ -25,7 +25,6 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
-  /* เพิ่ม Grid Pattern พื้นหลังสไตล์ Tech */
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.15), transparent 50%),
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -40,7 +39,7 @@ header {
   position: sticky;
   top: 0;
   background: rgba(11, 15, 25, 0.8);
-  backdrop-filter: blur(12px); /* เอฟเฟกต์กระจกฝ้าแบบโมเดิร์น */
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   z-index: 100;
 }
@@ -112,7 +111,6 @@ h2 {
   color: #fff;
 }
 
-/* เติมเส้นใต้หัวข้อแบบเทคๆ */
 h2::after {
   content: '';
   position: absolute;
@@ -125,66 +123,58 @@ h2::after {
 }
 
 /* =========================================
-   4. HIGH-TECH FRAMES (#hero, #about, #family)
+   4. NEW HERO FRAME DESIGN (กรอบฉาก Welcome ใหม่)
    ========================================= */
-#hero, #about, #family {
+#hero {
   position: relative;
-  padding: 35px 30px;
-  margin: 25px auto;
+  padding: 50px 30px;
+  margin: 30px auto;
   max-width: 850px;
-  
-  /* พื้นหลังน้ำเงินเข้มเน้นคุมโทนกับระบบหลัก */
+  text-align: center;
   background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.95));
   backdrop-filter: blur(10px);
   
-  /* ตัดมุมกรอบแบบไฮเทค (Chamfered Corners) */
+  /* ทรงกรอบแบบใหม่: ตัดมุมแบบสลับทะแยงล้ำยุค */
   clip-path: polygon(
-      0 20px, 
-      20px 0, 
+      30px 0%, 
       100% 0, 
-      100% calc(100% - 20px), 
-      calc(100% - 20px) 100%, 
-      0 100%
+      100% calc(100% - 30px), 
+      calc(100% - 30px) 100%, 
+      0 100%, 
+      0 30px
   );
 
-  border: 1px solid var(--accent-cyan);
-  box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+  border-left: 3px solid var(--accent-cyan);
+  border-right: 3px solid var(--accent-cyan);
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
   transition: all 0.3s ease;
 }
 
-/* ดีเทลจุดมุมขวาบน */
-#hero::before, #about::before, #family::before {
+/* ตกแต่งเส้นแถบด้านบนสไตล์ Terminal */
+#hero::before {
   content: '';
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
-  border-top: 3px solid var(--accent-cyan);
-  border-right: 3px solid var(--accent-cyan);
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
 }
 
-/* ดีเทลจุดมุมซ้ายล่าง */
-#hero::after, #about::after, #family::after {
+/* ตกแต่งเส้นแถบด้านล่างสไตล์ Terminal */
+#hero::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
-  border-bottom: 3px solid var(--accent-cyan);
-  border-left: 3px solid var(--accent-cyan);
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
 }
 
-#hero:hover, #about:hover, #family:hover {
-  box-shadow: 0 0 35px rgba(0, 242, 254, 0.3);
+#hero:hover {
+  box-shadow: 0 0 40px rgba(0, 242, 254, 0.35);
   transform: translateY(-3px);
-}
-
-/* Hero Content Specifics */
-#hero {
-  text-align: center;
-  padding: 50px 30px;
 }
 
 #hero h1 {
@@ -197,14 +187,40 @@ h2::after {
   letter-spacing: 1px;
 }
 
-#hero p, #about p, #family p {
-  font-size: 1.05rem;
+#hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* =========================================
+   5. ABOUT & FAMILY FRAMES (ปรับรูปทรงให้ต่างออกไป)
+   ========================================= */
+#about, #family {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-cyan); /* เน้นแถบสีหนาด้านข้างอย่างเดียว */
+  padding: 1.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+#about:hover, #family:hover {
+  border-color: var(--border-color);
+  border-left-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+  transform: translateX(5px);
+}
+
+#about p, #family p {
+  font-size: 1rem;
   color: var(--text-muted);
   margin-bottom: 0.4rem;
 }
 
 /* =========================================
-   5. CONTENT COMPONENTS
+   6. CONTENT COMPONENTS
    ========================================= */
 /* Skills List */
 #skills ul {
@@ -271,7 +287,7 @@ h2::after {
 }
 
 /* =========================================
-   6. PROJECT GRID & IMAGES (ระบบรูปภาพและการ์ด)
+   7. PROJECT GRID & IMAGES (ระบบรูปภาพและการ์ด)
    ========================================= */
 .project-grid {
     display: grid;
@@ -333,7 +349,7 @@ h2::after {
 }
 
 /* =========================================
-   7. LIGHTBOX MODAL (ป๊อปอัพดูรูปภาพเต็มจอ)
+   8. LIGHTBOX MODAL (ป๊อปอัพดูรูปภาพเต็มจอ)
    ========================================= */
 .lightbox-modal {
     display: none;
@@ -379,7 +395,7 @@ h2::after {
 }
 
 /* =========================================
-   8. LINK BUTTON & FOOTER
+   9. LINK BUTTON & FOOTER
    ========================================= */
 .link-btn {
     display: inline-block;
