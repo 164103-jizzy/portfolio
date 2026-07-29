@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap');
 
 :root {
-  --bg-color: #0b0f19;        /* สีพื้นหลังเข้มลึกลับ */
+  --bg-color: #0b0f19;        /* สีพื้นหลังเข้มลึลับ */
   --card-bg: #111827;         /* สีพื้นหลังของกล่องข้อความ */
   --accent-cyan: #00f2fe;     /* สีฟ้า Neon */
   --accent-green: #4facfe;    /* สีเขียว/ฟ้า Glossy */
@@ -123,7 +123,7 @@ h2::after {
 }
 
 /* =========================================
-   4. NEW HERO FRAME DESIGN (กรอบฉาก Welcome ใหม่)
+   4. NEW HERO FRAME (เปลี่ยนเฉพาะทรง Welcome)
    ========================================= */
 #hero {
   position: relative;
@@ -134,7 +134,7 @@ h2::after {
   background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.95));
   backdrop-filter: blur(10px);
   
-  /* ทรงกรอบแบบใหม่: ตัดมุมแบบสลับทะแยงล้ำยุค */
+  /* ทรงกรอบแบบใหม่เฉพาะ Welcome */
   clip-path: polygon(
       30px 0%, 
       100% 0, 
@@ -150,7 +150,6 @@ h2::after {
   transition: all 0.3s ease;
 }
 
-/* ตกแต่งเส้นแถบด้านบนสไตล์ Terminal */
 #hero::before {
   content: '';
   position: absolute;
@@ -161,7 +160,6 @@ h2::after {
   background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
 }
 
-/* ตกแต่งเส้นแถบด้านล่างสไตล์ Terminal */
 #hero::after {
   content: '';
   position: absolute;
@@ -194,27 +192,60 @@ h2::after {
 }
 
 /* =========================================
-   5. ABOUT & FAMILY FRAMES (ปรับรูปทรงให้ต่างออกไป)
+   5. ORIGINAL HIGH-TECH FRAMES (#about, #family)
    ========================================= */
 #about, #family {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--accent-cyan); /* เน้นแถบสีหนาด้านข้างอย่างเดียว */
-  padding: 1.8rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  position: relative;
+  padding: 35px 30px;
+  margin: 25px auto;
+  max-width: 850px;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(15, 23, 42, 0.95));
+  backdrop-filter: blur(10px);
+  
+  /* ทรงกรอบแบบเดิมที่คุณชอบ */
+  clip-path: polygon(
+      0 20px, 
+      20px 0, 
+      100% 0, 
+      100% calc(100% - 20px), 
+      calc(100% - 20px) 100%, 
+      0 100%
+  );
+
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
   transition: all 0.3s ease;
 }
 
+#about::before, #family::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 3px solid var(--accent-cyan);
+  border-right: 3px solid var(--accent-cyan);
+}
+
+#about::after, #family::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 3px solid var(--accent-cyan);
+  border-left: 3px solid var(--accent-cyan);
+}
+
 #about:hover, #family:hover {
-  border-color: var(--border-color);
-  border-left-color: var(--accent-cyan);
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
-  transform: translateX(5px);
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.3);
+  transform: translateY(-3px);
 }
 
 #about p, #family p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
   margin-bottom: 0.4rem;
 }
