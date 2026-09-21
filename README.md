@@ -1,4 +1,4 @@
-# Portfolio Sujit Kerdthong m6/3 No.4
+# Portfolio Sujit Kerdthong M6/3 No.4
 
 <div align="center">
 
